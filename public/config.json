@@ -29,30 +29,30 @@
             "body": "",
             "header": "",
             "format": "json",
-            "useJwt": true,
+            "useJwt": false,
             "timeout": 10000
         }
     },
     "configurationArguments": {
         "save": {
-            "url": "https://<your-domain-here>/journeybuilder/save",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/save",
             "verb": "POST",
-            "useJwt": true
+            "useJwt": false
         },
         "publish": {
-            "url": "https://<your-domain-here>/journeybuilder/publish",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/publish",
             "verb": "POST",
-            "useJwt": true
+            "useJwt": false
         },
         "stop": {
-            "url": "https://<your-domain-here>/journeybuilder/stop",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/stop",
             "verb": "POST",
-            "useJwt": true
+            "useJwt": false
         },
         "validate": {
-            "url": "https://<your-domain-here>/journeybuilder/validate",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/validate",
             "verb": "POST",
-            "useJwt": true
+            "useJwt": false
         }
     },
     "wizardSteps": [

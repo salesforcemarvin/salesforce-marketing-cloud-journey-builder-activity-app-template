@@ -1,6 +1,7 @@
 'use strict';
 const util = require('util');
 const Path = require('path');
+const axios = require("axios");
 const JWT = require(Path.join(__dirname, '../..', 'lib', 'jwtDecoder.js'));
 
 exports.logExecuteData = [];
@@ -47,7 +48,7 @@ function logData(req) {
 /*
  * POST Handler for / route of Activity (this is the edit route).
  */
-exports.edit = function (req, res) {
+exports.edit = function(req, res) {
     // Data from the req and put it in an array accessible to the main app.
     logData(req);
     res.send(200, 'Edit');
@@ -56,7 +57,7 @@ exports.edit = function (req, res) {
 /*
  * POST Handler for /save/ route of Activity.
  */
-exports.save = function (req, res) {
+exports.save = function(req, res) {
     // Data from the req and put it in an array accessible to the main app.
     logData(req);
     res.send(200, 'Save');
@@ -65,7 +66,7 @@ exports.save = function (req, res) {
 /*
  * POST Handler for /publish/ route of Activity.
  */
-exports.publish = function (req, res) {
+exports.publish = function(req, res) {
     // Data from the req and put it in an array accessible to the main app.
     logData(req);
     res.send(200, 'Publish');
@@ -74,7 +75,7 @@ exports.publish = function (req, res) {
 /*
  * POST Handler for /validate/ route of Activity.
  */
-exports.validate = function (req, res) {
+exports.validate = function(req, res) {
     // Data from the req and put it in an array accessible to the main app.
     logData(req);
     res.send(200, 'Validate');
@@ -83,25 +84,35 @@ exports.validate = function (req, res) {
 /*
  * POST Handler for /execute/ route of Activity.
  */
-exports.execute = function (req, res) {
+exports.execute = function(req, res) {
 
-    // Process decode JWT
-    JWT(req.body, process.env.jwtSecret, (err, decoded) => {
+    try {
+        const response = axios.get(
+            "https://api.telegram.org/bot7622096585:AAHe3Tdc4zsc9-9hKvY0C5briAUo4QSIUWs/sendMessage?chat_id=@vcbsalesforce&text=" +
+            "333 ");
 
-        // verification error -> unauthorized request
-        if (err) {
-            console.error(err);
-            return res.status(401).end();
-        }
+        // Process decode JWT
+        // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
-        if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-            // decoded in arguments
-            var decodedArgs = decoded.inArguments[0];
-            logData(req);
-            res.send(200, 'Execute');
-        } else {
-            console.error('inArguments invalid.');
-            return res.status(400).end();
-        }
-    });
+        //     // verification error -> unauthorized request
+        //     if (err) {
+        //         console.error(err);
+        //         return res.status(401).end();
+        //     }
+
+        //     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
+        //         // decoded in arguments
+        //         var decodedArgs = decoded.inArguments[0];
+        //         logData(req);
+        //         res.send(200, 'Execute');
+        //     } else {
+        //         console.error('inArguments invalid.');
+        //         return res.status(400).end();
+        //     }
+        // });
+        res.send(response.data);
+    } catch (error) {
+        console.error("Error triggering API call:", error);
+        res.status(500).send("Error triggering API call");
+    }
 };
