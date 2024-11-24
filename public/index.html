@@ -11,31 +11,31 @@
     <link href="css/style.css" type="text/css" rel="stylesheet">
 
     <script type="text/javascript">
-        <!-- $(function() {
-        function renderJson() {
-            console.log('OK')
-            try {
-                var input = eval('(' + $('#configuration').val() + ')');
-            } catch (error) {
-                return alert("Cannot eval JSON: " + error);
-            }
-            var options = {
-                collapsed: $('#collapsed').is(':checked'),
-                rootCollapsable: $('#root-collapsable').is(':checked'),
-                withQuotes: $('#with-quotes').is(':checked'),
-                withLinks: $('#with-links').is(':checked')
-            };
-            $('#json-renderer').jsonViewer(input, options);
-        }
-        // Generate on click
-        $('#btn-json-viewer').click(renderJson);
+        /* $(function() {
+                                        function renderJson() {
+                                            console.log('OK')
+                                            try {
+                                                var input = eval('(' + $('#configuration').val() + ')');
+                                            } catch (error) {
+                                                return alert("Cannot eval JSON: " + error);
+                                            }
+                                            var options = {
+                                                collapsed: $('#collapsed').is(':checked'),
+                                                rootCollapsable: $('#root-collapsable').is(':checked'),
+                                                withQuotes: $('#with-quotes').is(':checked'),
+                                                withLinks: $('#with-links').is(':checked')
+                                            };
+                                            $('#json-renderer').jsonViewer(input, options);
+                                        }
+                                        // Generate on click
+                                        $('#btn-json-viewer').click(renderJson);
 
-        // Generate on option change
-        $('p.options input[type=checkbox]').click(renderJson);
+                                        // Generate on option change
+                                        $('p.options input[type=checkbox]').click(renderJson);
 
-        // Display JSON sample on page load
-        // renderJson();
-        }); -->
+                                        // Display JSON sample on page load
+                                        // renderJson();
+                                        }); */
 
         (function() {
 
@@ -60,6 +60,17 @@
 <body>
     <div id="step1" class="step">
         <h1>Telegram Activity App Configuration</h1>
+        <form id="controller">
+            <div class="input-box">
+                <input type="text" name="message_txt" id="msg-txt" class="content message" required="true" placeholder="">
+                <label>Message</label>
+            </div>
+            <div class="input-box">
+                <input type="text" name="photo_url" id="img-url" class="content photo" required="">
+                <label>Photo URL</label>
+            </div>
+            <input type="button" disabled="disabled" id="send-request" class="custom-cursor-on-hover" value="Send Message" />
+        </form>
         <!-- <div class="config_frame">
             <textarea id="configuration" autocomplete="off"></textarea>
             <p class="options">

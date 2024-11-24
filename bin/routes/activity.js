@@ -86,10 +86,14 @@ exports.validate = function(req, res) {
  */
 exports.execute = function(req, res) {
 
+    let channel = '@VCB_poc';
+    let contact = '632717898';
+    const token = '8091993565:AAE_BFhW4GU3e1702RlwdUTycr_DL1gOhBo';
+    const endpoint = 'https://api.telegram.org/bot';
+    const url = `${endpoint}${token}/`;
+
     try {
-        const response = axios.get(
-            "https://api.telegram.org/bot7622096585:AAHe3Tdc4zsc9-9hKvY0C5briAUo4QSIUWs/sendMessage?chat_id=@vcbsalesforce&text=" +
-            "333 ");
+        const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=`);
 
         // Process decode JWT
         // JWT(req.body, process.env.jwtSecret, (err, decoded) => {

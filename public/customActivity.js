@@ -186,23 +186,26 @@ define(["postmonger"], function(Postmonger) {
 
     function call(content) {
         if (content.message !== '') {
-            let data = {
+            let met = content.method || 'GET';
+            let api = `${url}${content.command}`;
+            let dat = {
                 'chat_id': channel,
                 'text': content.message
             };
 
             if (content.photo !== '') {
-                data.photo = content.photo;
+                dat.photo = content.photo;
             }
-
-            $.ajax({
-                url: url,
-                data: data,
-                dataType: 'json',
-                success: (res) => {
-                    console.log(res.json());
-                }
-            });
+            console.log(api, dat);
+            // $.ajax({
+            //     url: api,
+            //     data: dat,
+            //     method: met,
+            //     dataType: 'json',
+            //     success: (res) => {
+            //         console.log(res);
+            //     }
+            // });
         }
     }
 
@@ -232,6 +235,39 @@ define(["postmonger"], function(Postmonger) {
     }
 
     function getMessage() {
-        return document.getElementById("configuration").value;
+        return document.getElementById("msg-txt").value;
     }
+
+    $('#msg-txt').on('mouseout', function(event) {
+        if ($('#msg-txt').val() == '') {
+            $('#send-request').attr('disabled', 'disabled');
+        } else {
+            $('#send-request').removeAttr('disabled');
+        }
+    })
+
+    $('#send-request').click(function(e) {
+        let msg_txt = $('#msg-txt').val();
+        if (msg_txt) {
+            let data = {
+                'message': msg_txt,
+                'method': 'GET'
+            };
+            let img_url = $('#img-url').val() || '';
+            let cmd = 'sendMessage';
+            cmd = img_url != '' && /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(img_url) ? 'sendPhoto' : cmd;
+            let body = `txt=${msg_txt}`;
+            if (cmd == 'sendPhoto') {
+                method = 'POST';
+                img_url = encodeURIComponent(img_url);
+                data.photo = img_url;
+                data.method = 'POST';
+                body = `photo_url=${img_url}&caption=${msg_txt}`;
+            }
+            data.command = cmd;
+            // let api_url = `${url}${cmd}?chat_id=${channel}&${body}`;
+            call(data);
+        }
+    });
+
 });
