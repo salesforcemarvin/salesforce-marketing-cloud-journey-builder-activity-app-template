@@ -1,0 +1,17 @@
+node_modules
+combined.log
+bower_components
+yarn.lock
+.env
+token
+logs
+certs
+caches
+sessions
+src/config/config.json
+*.swp
+*.swo
+*.log
+public/vendor/salesforce-lightning-design-system/
+# Dockerfile
+# docker-compose.yml

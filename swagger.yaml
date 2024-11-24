@@ -1,0 +1,26 @@
+swagger: "2.0"
+info:
+  description: "Salesforce Marketing Cloud - Journey Builder - Custom activity application API glosary"
+  version: 1.0.0
+  title: Activity Application API Glosary
+basePath: /v1
+schemes:
+  - http
+  - https
+paths: ""
+definitions: ""          
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+
+components:
+  schemas:
+    ContentDLCreate:
+      properties:
+        statusCode:
+          type: integer
+        statusMessage:
+          type: string
+        body: object

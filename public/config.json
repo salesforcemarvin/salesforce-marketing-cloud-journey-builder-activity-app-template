@@ -1,0 +1,101 @@
+{
+    "workflowApiVersion": "1.0",
+    "lang": {
+        "en-US": {
+            "name": "VCB Telegram",
+            "description": "Salesforce Marketing Cloud - Journey Builder Telegram custom activity."
+        },
+        "vi-VN": {
+            "name": "Telegram VCB",
+            "description": "Salesforce Marketing Cloud - Journey Builder ứng dụng tương tác với Telegram."
+        }
+    },
+    "metaData": {
+        "icon": "images/telegram-icon.png",
+        "iconSmall": "images/telegram-icon-small.png",
+        "category": "message",
+        "isConfigured": true
+    },
+    "type": "REST",
+    "arguments": {
+        "execute": {
+            "inArguments": [{
+                "chat_id": "@VCB_poc",
+                "text": "VCB xin kính chúc quý khách hàng một ngày làm việc vui vẻ!"
+            }],
+            "outArguments": [],
+            "url": "https://api.telegram.org/bot8091993565:AAE_BFhW4GU3e1702RlwdUTycr_DL1gOhBo/sendMessage",
+            "verb": "POST",
+            "body": "",
+            "header": "",
+            "format": "json",
+            "useJwt": true,
+            "timeout": 10000
+        }
+    },
+    "configurationArguments": {
+        "save": {
+            "url": "https://<your-domain-here>/journeybuilder/save",
+            "verb": "POST",
+            "useJwt": true
+        },
+        "publish": {
+            "url": "https://<your-domain-here>/journeybuilder/publish",
+            "verb": "POST",
+            "useJwt": true
+        },
+        "stop": {
+            "url": "https://<your-domain-here>/journeybuilder/stop",
+            "verb": "POST",
+            "useJwt": true
+        },
+        "validate": {
+            "url": "https://<your-domain-here>/journeybuilder/validate",
+            "verb": "POST",
+            "useJwt": true
+        }
+    },
+    "wizardSteps": [
+        { "label": "Bước 1", "key": "step1" },
+        { "label": "Bước 2", "key": "step2" },
+        { "label": "Bước 3", "key": "step3", "active": false }
+    ],
+    "userInterfaces": {
+        "configModal": {
+            "height": 380,
+            "width": 1028,
+            "fullscreen": false
+        },
+        "configInspector": {
+            "size": "medium"
+        }
+    },
+    "schema": {
+        "arguments": {
+            "execute": {
+                "inArguments": [{
+                    "contactKey": {
+                        "dataType": "FullName",
+                        "isNullable": false,
+                        "direction": "in"
+                    },
+                    "firstName": {
+                        "dataType": "Title",
+                        "isNullable": true,
+                        "direction": "in"
+                    },
+                    "lastName": {
+                        "dataType": "Phone",
+                        "isNullable": true,
+                        "direction": "in"
+                    },
+                    "customField": {
+                        "dataType": "Email",
+                        "isNullable": true,
+                        "direction": "in"
+                    }
+                }]
+            }
+        }
+    }
+}

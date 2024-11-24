@@ -1,0 +1,17 @@
+body {
+  margin: 0 100px;
+  font-family: sans-serif;
+}
+p.options label {
+  margin-right: 10px;
+}
+p.options input[type=checkbox] {
+  vertical-align: middle;
+}
+textarea#configuration {
+  width: 100%;
+  height: 200px;
+}
+pre#json-renderer {
+  border: 1px solid #aaa;
+}
