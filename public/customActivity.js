@@ -80,7 +80,7 @@ define(["postmonger"], function(Postmonger) {
             // If there is a message, skip to the summary step
         } else {
 
-            document.getElementById("configuration").value = message;
+            $("#msg-txt").val(message);
             $("#message").html(message);
             //showStep(null, 3);
         }
@@ -98,13 +98,13 @@ define(["postmonger"], function(Postmonger) {
 
     //Save Sequence
     function onClickedNext() {
-        // var configuration = JSON.parse(
-        //   document.getElementById("configuration").value
+        // var msg-txt = JSON.parse(
+        //   $("#msg-txt").val()
         // );
-        //var configuration = document.getElementById("configuration").value;
+        //var msg-txt = $("#msg-txt").val();
 
-        //connection.trigger("updateActivity", configuration);
-        //save(configuration);
+        //connection.trigger("updateActivity", msg-txt);
+        //save(msg-txt);
 
         if (
             (currentStep.key === "step3" && steps[3].active === false) ||
@@ -197,15 +197,15 @@ define(["postmonger"], function(Postmonger) {
                 dat.photo = content.photo;
             }
             console.log(api, dat);
-            // $.ajax({
-            //     url: api,
-            //     data: dat,
-            //     method: met,
-            //     dataType: 'json',
-            //     success: (res) => {
-            //         console.log(res);
-            //     }
-            // });
+            $.ajax({
+                url: api,
+                data: dat,
+                method: met,
+                dataType: 'json',
+                success: (res) => {
+                    console.log(res);
+                }
+            });
         }
     }
 
@@ -235,7 +235,7 @@ define(["postmonger"], function(Postmonger) {
     }
 
     function getMessage() {
-        return document.getElementById("msg-txt").value;
+        return $("#msg-txt").val();
     }
 
     $('#msg-txt').on('mouseout', function(event) {
