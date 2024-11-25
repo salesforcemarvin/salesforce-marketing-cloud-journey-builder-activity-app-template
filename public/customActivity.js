@@ -40,8 +40,8 @@ define(["postmonger"], function(Postmonger) {
         connection.trigger("requestEndpoints");
 
         var message = getMessage();
-        $("#message").html(message);
-
+        $("#message").html('');
+        $('#msg-txt').val('')
     }
 
     function initialize(data) {
