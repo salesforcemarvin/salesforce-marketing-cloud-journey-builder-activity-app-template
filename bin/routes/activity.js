@@ -105,7 +105,7 @@ exports.execute = function (req, res) {
     var text = oArgs.text;
     //var text = "marvin test";
 
-    const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${text}");
+    const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${text}`);
 
     // Process decode JWT
     // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
