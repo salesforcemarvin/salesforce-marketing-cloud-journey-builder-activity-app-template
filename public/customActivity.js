@@ -195,6 +195,7 @@ define(["postmonger"], function(Postmonger) {
 
             if (content.photo !== '') {
                 dat.photo = content.photo;
+                dat.caption = content.message;
             }
             console.log(api, dat);
             $.ajax({
@@ -281,7 +282,6 @@ define(["postmonger"], function(Postmonger) {
             cmd = img_url != '' ? 'sendPhoto' : cmd;
             let body = `txt=${msg_txt}`;
             if (cmd == 'sendPhoto') {
-                img_url = encodeURIComponent(img_url);
                 data.photo = img_url;
                 data.method = 'POST';
                 body = `photo_url=${img_url}&caption=${msg_txt}`;
