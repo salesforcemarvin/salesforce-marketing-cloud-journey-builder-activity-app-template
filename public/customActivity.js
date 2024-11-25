@@ -1,9 +1,9 @@
 define(["postmonger"], function(Postmonger) {
     "use strict";
 
-    let channel = '@VCB_poc';
+    let channel = '@vcbsalesforce';
     let contact = '632717898';
-    const token = '8091993565:AAE_BFhW4GU3e1702RlwdUTycr_DL1gOhBo';
+    const token = "7622096585:AAHe3Tdc4zsc9-9hKvY0C5briAUo4QSIUWs";
     const endpoint = 'https://api.telegram.org/bot';
     const url = `${endpoint}${token}/`;
 

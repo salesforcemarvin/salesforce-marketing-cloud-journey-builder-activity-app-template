@@ -3,6 +3,7 @@ const util = require("util");
 const Path = require("path");
 const axios = require("axios");
 const JWT = require(Path.join(__dirname, "../..", "lib", "jwtDecoder.js"));
+const config = require('./../../public/config.json');
 
 exports.logExecuteData = [];
 
@@ -85,18 +86,17 @@ exports.validate = function (req, res) {
  * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function (req, res) {
-  let channel = "@vcbsalesforce";
+  //let channel = "@vcbsalesforce";
   let contact = "632717898";
   const token = "7622096585:AAHe3Tdc4zsc9-9hKvY0C5briAUo4QSIUWs";
   const endpoint = "https://api.telegram.org/bot";
   const url = `${endpoint}${token}/`;
 
+  console.log(config);
+
   try {
     //merge the array of objects.
-
-    // var aArgs = req.execute.inArguments[0];
-    //var aArgs = req.execute.inArguments;
-    // var aArgs = req.execute.inArguments;
+     const aArgs = config.arguments.execute.inArguments[0];
     // var oArgs = {};
     // for (var i = 0; i < aArgs.length; i++) {
     //   for (var key in aArgs[i]) {
@@ -104,16 +104,12 @@ exports.execute = function (req, res) {
     //   }
     // }
 
-    //const text1 = oArgs.text;
-    //const text1 = "marvinwoooo";
-    //const text1 = req.workflowApiVersion;
-    const text1 = req;
-    
-    const response = axios.get(
-      `${url}sendMessage?chat_id=${channel}&text=${text1}`
-    );
-    // const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${aArgs.text}`);
+    const chat_id = aArgs.chat_id;
+    const text = aArgs.text;
 
+    const response = axios.get(
+      `${url}sendMessage?chat_id=${chat_id}&text=${text}`
+    );
     // Process decode JWT
     // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
