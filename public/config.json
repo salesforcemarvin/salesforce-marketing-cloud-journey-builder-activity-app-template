@@ -21,7 +21,7 @@
         "execute": {
             "inArguments": [{
                 "chat_id": "@VCB_poc",
-                "text": "VCB xin kính chúc quý khách hàng một ngày làm việc vui vẻ!"
+                "text": "Marvin - VCB xin kính chúc quý khách hàng một ngày làm việc vui vẻ!"
             }],
             "outArguments": [],
             "url": "https://api.telegram.org/bot8091993565:AAE_BFhW4GU3e1702RlwdUTycr_DL1gOhBo/sendMessage",
