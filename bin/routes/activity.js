@@ -94,13 +94,13 @@ exports.execute = function (req, res) {
   try {
 
     //merge the array of objects.
-    // var aArgs = req.execute.inArguments;
-    // var oArgs = {};
-    // for (var i = 0; i < aArgs.length; i++) {
-    //   for (var key in aArgs[i]) {
-    //     oArgs[key] = aArgs[i][key];
-    //   }
-    // }
+    var aArgs = req.execute.inArguments;
+    var oArgs = {};
+    for (var i = 0; i < aArgs.length; i++) {
+      for (var key in aArgs[i]) {
+        oArgs[key] = aArgs[i][key];
+      }
+    }
 
     //const text1 = oArgs.text;
     const text1 = "marvinwoooo";
