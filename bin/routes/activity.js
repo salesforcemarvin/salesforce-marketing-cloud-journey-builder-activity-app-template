@@ -94,22 +94,22 @@ exports.execute = function (req, res) {
   try {
 
     //merge the array of objects.
-    // var aArgs = req.body.inArguments;
-    // var oArgs = {};
-    // for (var i = 0; i < aArgs.length; i++) {
-    //   for (var key in aArgs[i]) {
-    //     oArgs[key] = aArgs[i][key];
-    //   }
-    // }
+    var aArgs = req.execute.inArguments;
+    var oArgs = {};
+    for (var i = 0; i < aArgs.length; i++) {
+      for (var key in aArgs[i]) {
+        oArgs[key] = aArgs[i][key];
+      }
+    }
 
-    // var text = oArgs.text;
-    //const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${text}`);
+    const text1 = oArgs.text;
+    const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${text1}`);
 
     //var text = "marvin test";
     //const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=marvinwooooo`);
 
-    const inArguments = req.execute.inArguments[0];
-    const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${inArguments.text}`);
+    // const inArguments = req.execute.inArguments[0];
+    // const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${inArguments.text}`);
 
 
     // Process decode JWT
