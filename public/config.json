@@ -24,7 +24,7 @@
                 "text": "Marvin - VCB xin kính chúc quý khách hàng một ngày làm việc vui vẻ!"
             }],
             "outArguments": [],
-            "url": "https://ott-marvin-9865c3f47ac7.herokuapp.com/execute",
+            "url": "https://ott-marvin-9865c3f47ac7.herokuapp.com/api/execute",
             "verb": "POST",
             "body": "",
             "header": "",
