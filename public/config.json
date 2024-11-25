@@ -24,7 +24,7 @@
                 "text": "Marvin - VCB xin kính chúc quý khách hàng một ngày làm việc vui vẻ!"
             }],
             "outArguments": [],
-            "url": "https://api.telegram.org/bot8091993565:AAE_BFhW4GU3e1702RlwdUTycr_DL1gOhBo/sendMessage",
+            "url": "https://ott-marvin-9865c3f47ac7.herokuapp.com/execute",
             "verb": "POST",
             "body": "",
             "header": "",
@@ -35,22 +35,22 @@
     },
     "configurationArguments": {
         "save": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/save",
+            "url": "https://ott-marvin-9865c3f47ac7.herokuapp.com/api/save",
             "verb": "POST",
             "useJwt": false
         },
         "publish": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/publish",
+            "url": "https://ott-marvin-9865c3f47ac7.herokuapp.com/api/publish",
             "verb": "POST",
             "useJwt": false
         },
         "stop": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/stop",
+            "url": "https://ott-marvin-9865c3f47ac7.herokuapp.com/api/stop",
             "verb": "POST",
             "useJwt": false
         },
         "validate": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/validate",
+            "url": "https://ott-marvin-9865c3f47ac7.herokuapp.com/api/validate",
             "verb": "POST",
             "useJwt": false
         }
