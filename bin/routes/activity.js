@@ -93,9 +93,10 @@ exports.execute = function (req, res) {
 
   try {
     //merge the array of objects.
-    
+
     // var aArgs = req.execute.inArguments[0];
-    var aArgs = req.execute.inArguments;
+    //var aArgs = req.execute.inArguments;
+    var aArgs = req.execute;
     var oArgs = {};
     for (var i = 0; i < aArgs.length; i++) {
       for (var key in aArgs[i]) {
