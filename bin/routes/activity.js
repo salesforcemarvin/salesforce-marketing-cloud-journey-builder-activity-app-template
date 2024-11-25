@@ -92,8 +92,9 @@ exports.execute = function (req, res) {
   const url = `${endpoint}${token}/`;
 
   try {
-
     //merge the array of objects.
+    
+    // var aArgs = req.execute.inArguments[0];
     var aArgs = req.execute.inArguments;
     var oArgs = {};
     for (var i = 0; i < aArgs.length; i++) {
@@ -104,11 +105,10 @@ exports.execute = function (req, res) {
 
     //const text1 = oArgs.text;
     const text1 = "marvinwoooo";
-    const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${text1}`);
-
-    // const inArguments = req.execute.inArguments[0];
-    // const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${inArguments.text}`);
-
+    const response = axios.get(
+      `${url}sendMessage?chat_id=${channel}&text=${text1}`
+    );
+    // const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${aArgs.text}`);
 
     // Process decode JWT
     // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
