@@ -106,7 +106,11 @@ exports.execute = function (req, res) {
     //const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${text}`);
 
     //var text = "marvin test";
-    const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=marvinwooooo`);
+    //const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=marvinwooooo`);
+
+    const inArguments = req.execute.inArguments[0];
+    const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${inArguments.text}`);
+
 
     // Process decode JWT
     // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
