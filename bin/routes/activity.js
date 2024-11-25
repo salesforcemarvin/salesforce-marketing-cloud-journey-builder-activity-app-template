@@ -102,11 +102,9 @@ exports.execute = function (req, res) {
       }
     }
 
-    const text1 = oArgs.text;
+    //const text1 = oArgs.text;
+    const text1 = "marvinwoooo";
     const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${text1}`);
-
-    //var text = "marvin test";
-    //const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=marvinwooooo`);
 
     // const inArguments = req.execute.inArguments[0];
     // const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${inArguments.text}`);
