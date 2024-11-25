@@ -240,9 +240,31 @@ define(["postmonger"], function(Postmonger) {
 
     $('#msg-txt').on('mouseout', function(event) {
         if ($('#msg-txt').val() == '') {
+            $('#txt-cnt .message__text').html('');
+            $('#txt-cnt .message__time').html('');
             $('#send-request').attr('disabled', 'disabled');
+            if ($('#preview-frame').attr('class')!='hidden') {
+                $('#preview-frame').slideUp("fast", function(){
+                    $('#preview-frame').addClass('hidden');
+                });
+            }
         } else {
+            const now = new Date(Date.now());
+            let current_time = now.getHours() + ":" + now.getMinutes(); 
+            console.log(current_time)
             $('#send-request').removeAttr('disabled');
+            $('#txt-cnt .message__text').html($('#msg-txt').val());
+            $('#txt-cnt .message__time').html(current_time);
+            $('#preview-frame').slideDown("slow", function(){
+                $('#preview-frame').removeClass('hidden');
+            });
+        }
+    })
+
+    $('#img-url').on('mouseout', function(event) {
+        let iu = $('#img-url').val();
+        if (iu != '' && /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(iu)) {
+            $('#prv-img').attr('src', iu);
         }
     })
 
@@ -267,7 +289,7 @@ define(["postmonger"], function(Postmonger) {
             data.command = cmd;
             // let api_url = `${url}${cmd}?chat_id=${channel}&${body}`;
             call(data);
-        }
+        } 
     });
 
 });

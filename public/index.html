@@ -62,14 +62,36 @@
         <h1>Telegram Activity App Configuration</h1>
         <form id="controller">
             <div class="input-box">
-                <input type="text" name="message_txt" id="msg-txt" class="content message" required="true" placeholder="">
+                <input type="text" name="message_txt" id="msg-txt" class="content message" required="true" placeholder="" />
                 <label>Message</label>
             </div>
             <div class="input-box">
-                <input type="text" name="photo_url" id="img-url" class="content photo" required="">
-                <label>Photo URL</label>
+                <input type="text" name="photo_url" id="img-url" class="content photo" required="" />
+                <label class="photo_label">Photo URL</label>
             </div>
             <input type="button" disabled="disabled" id="send-request" class="custom-cursor-on-hover" value="Send Message" />
+            <div id="preview-frame" class="hidden">
+                <section class="chat__body">
+                    <div class="messages">
+                        <div class="chat__loader">
+                          <div class="spinner"></div>
+                        </div>
+                        <div id="img-frm" class="message">
+                            <div class="message__image">
+                                <img id="prv-img" class="message__image__content" src="" />
+                            </div>
+                        </div>
+                        <div id="msg-frm" class="message">
+                            <div class="message__text">
+                                <div id="txt-cnt" class="message__text__content">
+                                    <div class="message__text"></div>
+                                    <div class="message__time"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </form>
         <!-- <div class="config_frame">
             <textarea id="configuration" autocomplete="off"></textarea>
