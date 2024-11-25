@@ -107,7 +107,7 @@ exports.execute = function (req, res) {
     //const text1 = oArgs.text;
     //const text1 = "marvinwoooo";
     //const text1 = req.workflowApiVersion;
-    const text1 = JSON.parse(req);
+    const text1 = req;
     
     const response = axios.get(
       `${url}sendMessage?chat_id=${channel}&text=${text1}`
