@@ -93,6 +93,10 @@ exports.execute = function(req, res) {
     const url = `${endpoint}${token}/`;
 
     try {
+
+            
+
+
         const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=`);
 
         // Process decode JWT
