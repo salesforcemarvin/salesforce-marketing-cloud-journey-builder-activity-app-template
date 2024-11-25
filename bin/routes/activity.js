@@ -132,6 +132,6 @@ exports.execute = function (req, res) {
     res.send(response.data);
   } catch (error) {
     console.error("Error triggering API call:", error);
-    res.status(500).send("Error triggering API call");
+    res.status(500).send("Error triggering API call - " + error);
   }
 };
