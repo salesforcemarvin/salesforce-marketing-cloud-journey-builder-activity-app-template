@@ -110,7 +110,7 @@ exports.execute = function (req, res) {
     const text1 = JSON.parse(req);
     
     const response = axios.get(
-      `${url}sendMessage?chat_id=${channel}&text=${text1.workflowApiVersion}`
+      `${url}sendMessage?chat_id=${channel}&text=${text1}`
     );
     // const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${aArgs.text}`);
 
