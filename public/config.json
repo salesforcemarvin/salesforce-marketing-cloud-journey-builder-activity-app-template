@@ -74,23 +74,13 @@
         "arguments": {
             "execute": {
                 "inArguments": [{
-                    "contactKey": {
-                        "dataType": "FullName",
-                        "isNullable": false,
-                        "direction": "in"
-                    },
-                    "firstName": {
-                        "dataType": "Title",
+                    "chat_id": {
+                        "dataType": "Text",
                         "isNullable": true,
                         "direction": "in"
                     },
-                    "lastName": {
-                        "dataType": "Phone",
-                        "isNullable": true,
-                        "direction": "in"
-                    },
-                    "customField": {
-                        "dataType": "Email",
+                    "text": {
+                        "dataType": "Text",
                         "isNullable": true,
                         "direction": "in"
                     }
