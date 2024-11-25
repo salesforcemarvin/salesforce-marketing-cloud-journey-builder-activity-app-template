@@ -94,18 +94,19 @@ exports.execute = function (req, res) {
   try {
 
     //merge the array of objects.
-    var aArgs = req.body.inArguments;
-    var oArgs = {};
-    for (var i = 0; i < aArgs.length; i++) {
-      for (var key in aArgs[i]) {
-        oArgs[key] = aArgs[i][key];
-      }
-    }
+    // var aArgs = req.body.inArguments;
+    // var oArgs = {};
+    // for (var i = 0; i < aArgs.length; i++) {
+    //   for (var key in aArgs[i]) {
+    //     oArgs[key] = aArgs[i][key];
+    //   }
+    // }
 
-    var text = oArgs.text;
+    // var text = oArgs.text;
+    //const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${text}`);
+
     //var text = "marvin test";
-
-    const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=${text}`);
+    const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=marvinwooooo`);
 
     // Process decode JWT
     // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
